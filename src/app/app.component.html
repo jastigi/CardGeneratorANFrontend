@@ -1,0 +1,29 @@
+<div class="container">
+    <header class="d-flex flex-wrap justify-content-center py-3 mb-4 border-bottom">
+        <a href="/" class="d-flex align-items-center mb-3 mb-md-0 me-md-auto text-dark text-decoration-none">
+            <span class="fs-4">Android Netrunner Card Generator</span>
+        </a>
+    </header>
+
+    <main>
+        <div class="row">
+            <div class="col-md-6">
+                <app-card-editor (cardChange)="updateCard($event)"></app-card-editor>
+            </div>
+            <div class="col-md-6 d-flex flex-column align-items-center">
+                <div style="position: sticky; top: 20px;">
+                    <app-card-preview [card]="currentCard"></app-card-preview>
+
+                    <div class="d-flex justify-content-center mt-3 gap-2">
+                        <button class="btn btn-primary d-flex align-items-center" (click)="onGenerate()">
+                            <i class="material-icons me-1">play_arrow</i> Generate
+                        </button>
+                        <button class="btn btn-success d-flex align-items-center" (click)="onSave()">
+                            <i class="material-icons me-1">save</i> Save
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+</div>

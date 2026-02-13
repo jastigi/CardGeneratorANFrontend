@@ -1,0 +1,46 @@
+<div *ngIf="card" #cardElement class="card"
+    [ngClass]="[card.side.toLowerCase(), card.faction.toLowerCase(), card.kind.toLowerCase()]"
+    [class.unique]="card.uniqueCard" (mousedown)="onMouseDown($event)" (mousemove)="onMouseMove($event)"
+    (mouseup)="onMouseUp()" (mouseleave)="onMouseUp()" (wheel)="onWheel($event)">
+
+    <div class="art-container" *ngIf="backgroundUrl">
+        <img [src]="backgroundUrl" class="card-art"
+            [style.transform]="'translate(' + artX + 'px, ' + artY + 'px) scale(' + artScale + ')'" alt="Artwork">
+    </div>
+
+    <img [src]="templateUrl" class="card-frame" alt="Card Template">
+
+    <div class="name">{{ card.uniqueCard ? '◆ ' : '' }}{{ card.name }}</div>
+    <div class="subtitle" *ngIf="isIdentity">{{ card.subtitle }}</div>
+
+    <div class="price" *ngIf="!isIdentity">{{ card.price }}</div>
+
+    <!-- Strength/Trash Cost -->
+    <div class="strength" *ngIf="hasStrength">
+        {{ card.strength }}
+    </div>
+
+    <div class="score-agenda" *ngIf="card.kind === 'agenda'">
+        {{ card.strength }}
+    </div>
+
+    <div class="type">{{ card.type }}</div>
+
+    <div class="main-content">
+        <div class="text" [innerHTML]="formattedText"></div>
+        <div class="fluff" *ngIf="card.fluff">{{ card.fluff }}</div>
+    </div>
+
+    <!-- Identity stats -->
+    <div class="link" *ngIf="isIdentity && card.side.toLowerCase() === 'runner'">{{ card.link }}</div>
+    <div class="min-deck" *ngIf="isIdentity">{{ card.minDeck }}</div>
+    <div class="max-influence" *ngIf="isIdentity">{{ card.maxInfluence }}</div>
+
+    <!-- Program stats -->
+    <div class="mu" *ngIf="isProgram">{{ card.mu }}</div>
+
+    <!-- Influence pips -->
+    <div class="influence" *ngIf="!isIdentity && card.kind.toLowerCase() !== 'agenda'" [ngClass]="'i' + card.influence">
+    </div>
+
+</div>

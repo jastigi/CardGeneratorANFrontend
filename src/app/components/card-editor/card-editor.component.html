@@ -1,0 +1,96 @@
+<div class="card p-3 shadow-sm" [formGroup]="cardForm">
+    <h3>Card Details</h3>
+
+    <div class="mb-3">
+        <label class="form-label">Side</label>
+        <select class="form-select" formControlName="side" (change)="onSideChange()">
+            <option *ngFor="let side of sides" [value]="side">{{ side | titlecase }}</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Faction</label>
+        <select class="form-select" formControlName="faction">
+            <option *ngFor="let f of availableFactions" [value]="f">{{ f | titlecase }}</option>
+        </select>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Kind</label>
+        <select class="form-select" formControlName="kind" (change)="onKindChange()">
+            <option *ngFor="let k of availableKinds" [value]="k">{{ k | titlecase }}</option>
+        </select>
+    </div>
+
+    <div class="mb-3 form-check">
+        <input type="checkbox" class="form-check-input" id="uniqueCheck" formControlName="uniqueCard">
+        <label class="form-check-label" for="uniqueCheck">Unique</label>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Name</label>
+        <input type="text" class="form-control" formControlName="name">
+    </div>
+
+    <div class="mb-3" *ngIf="isIdentity">
+        <label class="form-label">Subtitle</label>
+        <input type="text" class="form-control" formControlName="subtitle">
+    </div>
+
+    <div class="row" *ngIf="!isIdentity">
+        <div class="col-md-6 mb-3">
+            <label class="form-label">Cost</label>
+            <input type="number" class="form-control" formControlName="price">
+        </div>
+        <div class="col-md-6 mb-3" *ngIf="hasStrength()">
+            <label class="form-label">{{ strengthLabel }}</label>
+            <input type="number" class="form-control" formControlName="strength">
+        </div>
+    </div>
+
+    <div class="mb-3" *ngIf="isProgram">
+        <label class="form-label">MU</label>
+        <input type="number" class="form-control" formControlName="mu">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Type (Text)</label>
+        <input type="text" class="form-control" formControlName="type">
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Text (supports [click], [credit], etc.)</label>
+        <textarea class="form-control" formControlName="text" rows="4"></textarea>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Flavor Text</label>
+        <textarea class="form-control" formControlName="fluff" rows="2"></textarea>
+    </div>
+
+    <div class="mb-3" *ngIf="!isIdentity && !isAgenda">
+        <label class="form-label">Influence</label>
+        <input type="number" class="form-control" formControlName="influence">
+    </div>
+
+    <div class="row" *ngIf="isIdentity">
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Link</label>
+            <input type="number" class="form-control" formControlName="link">
+        </div>
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Min Deck</label>
+            <input type="number" class="form-control" formControlName="minDeck">
+        </div>
+        <div class="col-md-4 mb-3">
+            <label class="form-label">Max Influence</label>
+            <input type="number" class="form-control" formControlName="maxInfluence">
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label class="form-label">Image</label>
+        <input type="file" class="form-control" (change)="onFileSelected($event)">
+    </div>
+
+</div>

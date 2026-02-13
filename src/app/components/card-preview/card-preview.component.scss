@@ -1,0 +1,895 @@
+@mixin numbers() {
+    font-family: 'Orbitron', sans-serif;
+}
+
+@mixin title() {
+    font-family: 'Cinzel', serif;
+    text-transform: capitalize;
+}
+
+@mixin type() {
+    font-family: 'Lato', sans-serif;
+    text-transform: capitalize;
+}
+
+@mixin text() {
+    font-family: 'Noto Serif', serif;
+}
+
+@mixin trash() {
+    font-weight: bold;
+    font-family: 'Arial', san-serif;
+    font-size: 26px;
+    transform: scale(0.8, 1);
+    color: #988b7f;
+}
+
+:host {
+    display: block;
+}
+
+.card {
+    width: 312px;
+    height: 436px;
+    position: relative;
+    margin-bottom: 10px;
+    background-color: transparent;
+    overflow: hidden;
+    border-radius: 14px;
+    user-select: none;
+    cursor: move;
+
+    .art-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        z-index: 0;
+        background-color: black;
+        overflow: hidden;
+        border-radius: 14px;
+
+        .card-art {
+            width: 100%;
+            height: auto;
+            min-height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            transform-origin: center;
+            pointer-events: none;
+        }
+    }
+
+    .card-frame {
+        width: 100%;
+        height: 100%;
+        position: absolute;
+        top: 0;
+        left: 0;
+        z-index: 1;
+        pointer-events: none;
+        display: block;
+    }
+
+    >div:not(.art-container) {
+        position: absolute;
+        z-index: 2;
+        pointer-events: none;
+    }
+
+    .price,
+    .link,
+    .min-deck,
+    .max-influence {
+        @include numbers();
+        width: 27px;
+        color: white;
+    }
+
+    .strength {
+        @include numbers();
+        width: 27px;
+        color: black;
+    }
+
+    .name {
+        @include title();
+        font-size: 16px;
+        color: black;
+        white-space: nowrap;
+    }
+
+    .subtitle {
+        @include title();
+        font-size: 11px;
+    }
+
+    .type {
+        @include type();
+        font-weight: normal;
+        font-size: 13px;
+    }
+
+    .main-content {
+        width: 248px;
+        @include text();
+        font-size: 13px;
+        line-height: 1.2;
+
+        .fluff {
+            margin-top: 8px;
+            font-style: italic;
+            font-size: 10px;
+        }
+    }
+
+    .influence {
+        background: url('/assets/img/influence-pip.png');
+        width: 85px;
+        height: 16px;
+        background-repeat: repeat;
+        background-size: 17px;
+
+        &.i0 {
+            width: 0;
+        }
+
+        &.i1 {
+            width: 18px;
+        }
+
+        &.i2 {
+            width: 32px;
+        }
+
+        &.i3 {
+            width: 51px;
+        }
+
+        &.i4 {
+            width: 68px;
+        }
+
+        &.i5 {
+            width: 85px;
+        }
+    }
+
+    &.agenda {
+
+        .price,
+        .strength {
+            text-shadow: 3px 3px black;
+            font-size: 31px;
+            font-weight: bold;
+            z-index: 3;
+        }
+
+        .name {
+            top: 20px;
+            left: 22px;
+        }
+
+        .price {
+            top: 8px;
+            left: 268px;
+            text-align: center;
+            color: white;
+        }
+
+        .strength {
+            top: 215px;
+            left: 25px;
+            text-align: center;
+            color: black;
+        }
+
+        .type {
+            top: 275px;
+            left: 95px;
+        }
+
+        .main-content {
+            top: 306px;
+            left: 33px;
+        }
+
+        .score-agenda {
+            @include numbers();
+            top: 215px;
+            left: 25px;
+            font-size: 31px;
+            text-align: center;
+            color: white;
+            z-index: 3;
+            text-shadow: 3px 3px black;
+        }
+    }
+
+    &.operation {
+        .name {
+            top: 14px;
+            left: 79px;
+        }
+
+        .price {
+            top: 26px;
+            left: 25px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .type {
+            top: 255px;
+            left: 114px;
+        }
+
+        .main-content {
+            top: 291px;
+            left: 33px;
+        }
+
+        .influence {
+            bottom: 16px;
+            left: 44px;
+        }
+
+        &.haas {
+            .influence {
+                bottom: 18px;
+                left: 49px;
+            }
+
+            .price {
+                top: 29px;
+            }
+        }
+
+        &.nbn {
+            .influence {
+                bottom: 17px;
+                left: 49px;
+            }
+
+            .price {
+                top: 29px;
+            }
+        }
+
+        &.jinteki {
+            .influence {
+                bottom: 17px;
+                left: 49px;
+            }
+
+            .price {
+                top: 28px;
+            }
+        }
+
+        &.weyland {
+            .price {
+                top: 27px;
+                left: 24px;
+            }
+
+            .influence {
+                bottom: 19px;
+                left: 47px;
+            }
+        }
+    }
+
+    &.upgrade {
+        .name {
+            top: 222px;
+            left: 31px;
+            font-weight: normal;
+        }
+
+        .price {
+            top: 35px;
+            left: 25px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .strength {
+            top: 357px;
+            left: 268px;
+            text-align: center;
+            @include trash();
+        }
+
+        .type {
+            top: 251px;
+            left: 107px;
+        }
+
+        .main-content {
+            top: 283px;
+            left: 41px;
+        }
+
+        .influence {
+            bottom: 14px;
+            left: 48px;
+        }
+    }
+
+    &.asset {
+        .name {
+            top: 215px;
+            left: 35px;
+        }
+
+        .price {
+            top: 25px;
+            left: 24px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .strength {
+            top: 353px;
+            left: 265px;
+            text-align: center;
+            @include trash();
+        }
+
+        .type {
+            top: 247px;
+            left: 85px;
+        }
+
+        .main-content {
+            top: 280px;
+            left: 33px;
+        }
+
+        .influence {
+            bottom: 16px;
+            left: 44px;
+        }
+
+        &.haas {
+            .influence {
+                bottom: 16px;
+                left: 49px;
+            }
+        }
+
+        &.jinteki {
+            .influence {
+                bottom: 16px;
+                left: 49px;
+            }
+        }
+
+        &.nbn {
+            .influence {
+                bottom: 16px;
+                left: 49px;
+            }
+        }
+
+        &.weyland {
+            .influence {
+                bottom: 16px;
+                left: 47px;
+            }
+        }
+    }
+
+    &.ice {
+        .name {
+            top: 16px;
+            left: 70px;
+        }
+
+        .price {
+            top: 26px;
+            left: 22px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .strength {
+            transform: rotate(-90deg);
+            text-align: right;
+            top: 389px;
+            left: 11px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .type {
+            text-align: right;
+            top: 77px;
+            left: 19px;
+            transform-origin: top right;
+            transform: translate(-100%, 0) rotate(-90deg);
+            background-image: url('/assets/img/ice.png');
+            background-position: 0 -10px;
+            background-repeat: no-repeat;
+            padding-left: 46px;
+            border: none;
+        }
+
+        .main-content {
+            top: 65px;
+            left: 64px;
+            width: 208px;
+        }
+
+        .influence {
+            transform-origin: bottom left;
+            transform: rotate(-90deg);
+            bottom: 52px;
+            left: 299px;
+        }
+    }
+
+    &.event {
+        .name {
+            top: 12px;
+            left: 69px;
+        }
+
+        .price {
+            top: 29px;
+            left: 22px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .type {
+            top: 268px;
+            left: 85px;
+        }
+
+        .main-content {
+            top: 304px;
+            left: 33px;
+        }
+
+        .influence {
+            transform-origin: bottom left;
+            transform: rotate(-90deg);
+            bottom: 47px;
+            left: 305px;
+        }
+
+        &.adam,
+        &.apex {
+            .price {
+                top: 21px;
+                left: 19px;
+            }
+
+            .type {
+                top: 266px;
+            }
+
+            .main-content {
+                top: 295px;
+                left: 25px;
+            }
+
+            .influence {
+                bottom: 35px;
+                left: 310px;
+            }
+        }
+    }
+
+    &.hardware {
+        .name {
+            top: 218px;
+            left: 62px;
+        }
+
+        .price {
+            top: 35px;
+            left: 25px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .type {
+            top: 255px;
+            left: 124px;
+        }
+
+        .main-content {
+            top: 282px;
+            left: 37px;
+        }
+
+        .influence {
+            transform-origin: bottom left;
+            transform: rotate(-90deg);
+            bottom: 45px;
+            left: 307px;
+        }
+
+        &.adam,
+        &.apex {
+            .name {
+                top: 218px;
+                left: 62px;
+            }
+
+            .price {
+                top: 21px;
+                left: 19px;
+            }
+
+            .type {
+                top: 252px;
+            }
+
+            .influence {
+                bottom: 35px;
+                left: 310px;
+            }
+        }
+    }
+
+    &.program {
+        .name {
+            top: 198px;
+            left: 18px;
+        }
+
+        .price {
+            top: 30px;
+            left: 23px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .strength {
+            top: 390px;
+            left: 20px;
+            font-weight: bold;
+            font-size: 24px;
+        }
+
+        .type {
+            top: 230px;
+            left: 100px;
+        }
+
+        .main-content {
+            top: 266px;
+            left: 32px;
+        }
+
+        .influence {
+            transform-origin: bottom left;
+            transform: rotate(-90deg);
+            bottom: 45px;
+            left: 303px;
+        }
+
+        .mu {
+            top: 22px;
+            left: 79px;
+            font-size: 12px;
+            color: white;
+            text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
+            z-index: 2;
+            text-align: center;
+            width: 13px;
+        }
+
+        &.shaper {
+            .mu {
+                top: 20px;
+            }
+
+            .price {
+                top: 30px;
+                left: 22px;
+            }
+
+            .strength {
+                top: 390px;
+                left: 20px;
+            }
+        }
+
+        &.anarch {
+            .mu {
+                top: 18px;
+                left: 78px;
+            }
+
+            .price {
+                top: 28px;
+                left: 22px;
+            }
+
+            .strength {
+                top: 390px;
+                left: 20px;
+            }
+        }
+
+        &.adam,
+        &.apex {
+            .name {
+                top: 200px;
+                left: 18px;
+            }
+
+            .price {
+                top: 21px;
+                left: 19px;
+            }
+
+            .strength {
+                top: 374px;
+            }
+
+            .type {
+                top: 227px;
+            }
+
+            .main-content {
+                top: 257px;
+                left: 24px;
+            }
+
+            .influence {
+                bottom: 35px;
+                left: 310px;
+            }
+
+            .mu {
+                top: 14px;
+            }
+        }
+    }
+
+    &.resource {
+        .name {
+            top: 11px;
+            left: 72px;
+        }
+
+        .price {
+            top: 28px;
+            left: 23px;
+            font-size: 20px;
+            text-align: center;
+            color: white;
+        }
+
+        .type {
+            top: 209px;
+            left: 98px;
+        }
+
+        .main-content {
+            top: 248px;
+            left: 13px;
+        }
+
+        .influence {
+            transform-origin: bottom left;
+            transform: rotate(-90deg);
+            bottom: 47px;
+            left: 303px;
+        }
+
+        &.shaper {
+            .price {
+                top: 29px;
+            }
+        }
+
+        &.anarch {
+            .price {
+                top: 28px;
+            }
+
+            .influence {
+                bottom: 47px;
+                left: 305px;
+            }
+        }
+
+        &.criminal {
+            .influence {
+                bottom: 49px;
+                left: 306px;
+            }
+        }
+
+        &.adam,
+        &.apex {
+            .price {
+                top: 22px;
+                left: 20px;
+            }
+
+            .type {
+                top: 206px;
+            }
+
+            .influence {
+                bottom: 35px;
+                left: 310px;
+            }
+
+            .main-content {
+                top: 230px;
+                left: 13px;
+            }
+        }
+    }
+
+    &.identity {
+        .name {
+            font-weight: normal;
+        }
+
+        .type {
+            top: 320px;
+            left: 107px;
+        }
+
+        .main-content {
+            top: 348px;
+            width: 200px;
+        }
+
+        .min-deck {
+            text-shadow: 2px 2px white;
+            top: 378px;
+            font-weight: bold;
+            font-size: 15px;
+            text-align: center;
+            color: black;
+        }
+
+        .max-influence {
+            text-shadow: 2px 2px black;
+            top: 401px;
+            font-weight: bold;
+            font-size: 15px;
+            color: white;
+            text-align: center;
+        }
+
+        &.anarch,
+        &.criminal,
+        &.shaper {
+            .name {
+                top: 11px;
+                left: 108px;
+            }
+
+            .subtitle {
+                top: 36px;
+                left: 150px;
+                font-size: 9px;
+            }
+
+            .type {
+                top: 324px;
+                left: 115px;
+            }
+
+            .main-content {
+                left: 50px;
+            }
+
+            .link {
+                top: 18px;
+                left: 18px;
+                font-size: 24px;
+                text-align: center;
+                color: white;
+            }
+
+            .min-deck {
+                left: 267px;
+            }
+
+            .max-influence {
+                left: 267px;
+            }
+        }
+
+        &.adam,
+        &.apex {
+            .name {
+                top: 10px;
+                left: 80px;
+            }
+
+            .subtitle {
+                top: 36px;
+                left: 100px;
+                font-size: 11px;
+            }
+
+            .type {
+                top: 315px;
+                left: 107px;
+            }
+
+            .main-content {
+                top: 345px;
+                left: 45px;
+            }
+
+            .min-deck {
+                left: 267px;
+            }
+
+            .max-influence {
+                left: 267px;
+            }
+
+            .link {
+                top: 20px;
+                left: 20px;
+                font-size: 24px;
+                text-align: center;
+                color: white;
+            }
+
+            .main-content {
+                top: 340px;
+                left: 45px;
+            }
+        }
+
+        &.haas,
+        &.weyland,
+        &.jinteki,
+        &.nbn {
+            .name {
+                top: 22px;
+                left: 60px;
+                font-size: 18px;
+            }
+
+            .subtitle {
+                top: 52px;
+                left: 24px;
+                font-size: 11px;
+            }
+
+            .type {
+                top: 320px;
+                left: 107px;
+            }
+
+            .main-content {
+                left: 65px;
+            }
+
+            .min-deck {
+                left: 17px;
+            }
+
+            .max-influence {
+                left: 17px;
+            }
+        }
+    }
+}
