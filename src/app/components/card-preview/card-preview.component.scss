@@ -237,7 +237,7 @@
         }
 
         .main-content {
-            top: 291px;
+            top: 278px;
             left: 33px;
         }
 
@@ -265,6 +265,12 @@
 
             .price {
                 top: 29px;
+            }
+
+            .main-content {
+                top: 282px;
+                left: 33px;
+                font-size: 12px;
             }
         }
 
@@ -386,12 +392,25 @@
                 bottom: 16px;
                 left: 49px;
             }
+
+            .main-content {
+                top: 273px;
+                left: 33px;
+                font-size: 12px;
+            }
         }
 
         &.weyland {
             .influence {
                 bottom: 16px;
                 left: 47px;
+            }
+
+            .strength {
+                top: 353px;
+                left: 262px;
+                text-align: center;
+                @include trash();
             }
         }
     }
@@ -466,7 +485,7 @@
         }
 
         .main-content {
-            top: 304px;
+            top: 294px;
             left: 33px;
         }
 
@@ -507,7 +526,7 @@
         }
 
         .price {
-            top: 35px;
+            top: 30px;
             left: 25px;
             font-size: 20px;
             text-align: center;
@@ -581,7 +600,7 @@
         }
 
         .main-content {
-            top: 266px;
+            top: 258px;
             left: 32px;
         }
 
