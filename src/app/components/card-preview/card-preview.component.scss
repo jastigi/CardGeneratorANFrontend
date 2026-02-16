@@ -118,10 +118,15 @@
         font-size: 13px;
         line-height: 1.2;
 
+        .text {
+            white-space: pre-wrap;
+            /* Respeta los saltos de línea y hace que el texto baje si llega al borde */
+        }
+
         .fluff {
-            margin-top: 8px;
+            margin-top: 1px;
             font-style: italic;
-            font-size: 10px;
+            font-size: 8px;
         }
     }
 
@@ -193,8 +198,11 @@
         }
 
         .main-content {
-            top: 306px;
+            top: 298px;
             left: 33px;
+            display: flex;
+            flex-direction: column;
+            gap: 1px;
         }
 
         .score-agenda {
