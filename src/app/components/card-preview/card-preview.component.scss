@@ -508,8 +508,9 @@
             }
 
             .main-content {
-                top: 295px;
+                top: 290px;
                 left: 25px;
+                font-size: 11px;
             }
 
             .influence {
@@ -600,7 +601,7 @@
         }
 
         .main-content {
-            top: 258px;
+            top: 256px;
             left: 32px;
         }
 
@@ -612,8 +613,8 @@
         }
 
         .mu {
-            top: 22px;
-            left: 79px;
+            top: 20px;
+            left: 78px;
             font-size: 12px;
             color: white;
             text-shadow: 1px 1px 0 black, -1px -1px 0 black, 1px -1px 0 black, -1px 1px 0 black;
@@ -635,6 +636,10 @@
             .strength {
                 top: 390px;
                 left: 20px;
+            }
+
+            .fluff {
+                margin-left: 30px;
             }
         }
 
@@ -780,8 +785,9 @@
         }
 
         .main-content {
-            top: 348px;
-            width: 200px;
+            top: 346px;
+            width: 208px;
+            font-size: 11px;
         }
 
         .min-deck {
@@ -817,7 +823,7 @@
             }
 
             .type {
-                top: 324px;
+                top: 320px;
                 left: 115px;
             }
 
