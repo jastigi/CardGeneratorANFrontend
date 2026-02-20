@@ -209,6 +209,13 @@
             gap: 1px;
         }
 
+        &.jinteki {
+            .main-content {
+                left: 45px;
+                width: 235px;
+            }
+        }
+
         .score-agenda {
             @include numbers();
             top: 215px;
@@ -300,6 +307,12 @@
                 left: 47px;
             }
         }
+
+        &.neutral {
+            .main-content {
+                top: 282px;
+            }
+        }
     }
 
     &.upgrade {
@@ -332,6 +345,13 @@
         .main-content {
             top: 280px;
             left: 41px;
+        }
+
+        &.weyland {
+            .main-content {
+                width: 220px;
+                /* Estrechar para evitar el icono de trash */
+            }
         }
 
         .influence {
@@ -417,6 +437,12 @@
                 @include trash();
             }
         }
+
+        &.neutral {
+            .main-content {
+                top: 274px;
+            }
+        }
     }
 
     &.ice {
@@ -489,7 +515,7 @@
         }
 
         .main-content {
-            top: 291px;
+            top: 294px;
             left: 33px;
         }
 
@@ -512,7 +538,7 @@
             }
 
             .main-content {
-                top: 287px;
+                top: 290px;
                 left: 25px;
                 font-size: 11px;
             }
@@ -544,7 +570,7 @@
         }
 
         .main-content {
-            top: 279px;
+            top: 282px;
             left: 37px;
         }
 
@@ -605,7 +631,7 @@
         }
 
         .main-content {
-            top: 253px;
+            top: 256px;
             left: 32px;
         }
 
@@ -685,7 +711,7 @@
             }
 
             .main-content {
-                top: 254px;
+                top: 257px;
                 left: 24px;
             }
 
@@ -720,7 +746,7 @@
         }
 
         .main-content {
-            top: 245px;
+            top: 248px;
             left: 13px;
         }
 
@@ -772,7 +798,7 @@
             }
 
             .main-content {
-                top: 227px;
+                top: 230px;
                 left: 13px;
             }
         }
@@ -789,7 +815,7 @@
         }
 
         .main-content {
-            top: 343px;
+            top: 346px;
             width: 208px;
             font-size: 11px;
         }
