@@ -113,20 +113,24 @@
     }
 
     .main-content {
-        width: 248px;
+        width: 255px;
         @include text();
         font-size: 13px;
         line-height: 1.2;
+        word-break: break-word;
 
         .text {
             white-space: pre-wrap;
-            /* Respeta los saltos de línea y hace que el texto baje si llega al borde */
+            padding-right: 5px;
         }
 
         .fluff {
-            margin-top: 1px;
+            margin-top: 2px;
             font-style: italic;
-            font-size: 8px;
+            font-size: 0.65em;
+            display: block;
+            max-width: 195px;
+            /* Mantener fluff estrecho para evitar bordes de la plantilla */
         }
     }
 
@@ -198,7 +202,7 @@
         }
 
         .main-content {
-            top: 298px;
+            top: 295px;
             left: 33px;
             display: flex;
             flex-direction: column;
@@ -237,7 +241,7 @@
         }
 
         .main-content {
-            top: 278px;
+            top: 275px;
             left: 33px;
         }
 
@@ -268,7 +272,7 @@
             }
 
             .main-content {
-                top: 282px;
+                top: 279px;
                 left: 33px;
                 font-size: 12px;
             }
@@ -326,7 +330,7 @@
         }
 
         .main-content {
-            top: 283px;
+            top: 280px;
             left: 41px;
         }
 
@@ -363,7 +367,7 @@
         }
 
         .main-content {
-            top: 270px;
+            top: 267px;
             left: 33px;
             font-size: 12px;
         }
@@ -394,7 +398,7 @@
             }
 
             .main-content {
-                top: 273px;
+                top: 270px;
                 left: 33px;
                 font-size: 12px;
             }
@@ -452,7 +456,7 @@
         }
 
         .main-content {
-            top: 53px;
+            top: 50px;
             left: 64px;
             width: 208px;
         }
@@ -485,7 +489,7 @@
         }
 
         .main-content {
-            top: 294px;
+            top: 291px;
             left: 33px;
         }
 
@@ -508,7 +512,7 @@
             }
 
             .main-content {
-                top: 290px;
+                top: 287px;
                 left: 25px;
                 font-size: 11px;
             }
@@ -540,7 +544,7 @@
         }
 
         .main-content {
-            top: 282px;
+            top: 279px;
             left: 37px;
         }
 
@@ -601,7 +605,7 @@
         }
 
         .main-content {
-            top: 256px;
+            top: 253px;
             left: 32px;
         }
 
@@ -681,7 +685,7 @@
             }
 
             .main-content {
-                top: 257px;
+                top: 254px;
                 left: 24px;
             }
 
@@ -716,7 +720,7 @@
         }
 
         .main-content {
-            top: 248px;
+            top: 245px;
             left: 13px;
         }
 
@@ -768,7 +772,7 @@
             }
 
             .main-content {
-                top: 230px;
+                top: 227px;
                 left: 13px;
             }
         }
@@ -785,7 +789,7 @@
         }
 
         .main-content {
-            top: 346px;
+            top: 343px;
             width: 208px;
             font-size: 11px;
         }

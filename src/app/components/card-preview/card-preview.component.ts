@@ -1,4 +1,4 @@
-import { Component, Input, OnChanges, SimpleChanges, ElementRef, ViewChild } from '@angular/core';
+import { Component, Input, OnChanges, SimpleChanges, ElementRef, ViewChild, ChangeDetectorRef } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Card } from '../../models/card.model';
 import { DomSanitizer, SafeHtml, SafeUrl } from '@angular/platform-browser';
@@ -12,8 +12,9 @@ import { toPng } from 'html-to-image';
     styleUrls: ['./card-preview.component.scss']
 })
 export class CardPreviewComponent implements OnChanges {
-    @Input() card!: Card; // Force rebuild comment
+    @Input() card!: Card;
     @ViewChild('cardElement') cardElement!: ElementRef;
+    @ViewChild('mainContent') mainContent!: ElementRef;
 
     formattedText: SafeHtml = '';
     backgroundUrl: SafeUrl | null = null;
@@ -39,7 +40,7 @@ export class CardPreviewComponent implements OnChanges {
     private startX: number = 0;
     private startY: number = 0;
 
-    constructor(private sanitizer: DomSanitizer) { }
+    constructor(private sanitizer: DomSanitizer, private cdr: ChangeDetectorRef) { }
 
     ngOnChanges(changes: SimpleChanges): void {
         if (changes['card']) {
@@ -62,6 +63,42 @@ export class CardPreviewComponent implements OnChanges {
             this.artScale = 1.0;
         }
         this.debugInfo = this.templateUrl;
+
+        // Trigger font adjustment after view update
+        setTimeout(() => this.adjustFontSize(), 0);
+    }
+
+    adjustFontSize(): void {
+        const element = this.mainContent?.nativeElement;
+        if (!element) return;
+
+        this.cdr.detectChanges();
+
+        // Reset to initial size or a standard base size before checking
+        element.style.fontSize = '';
+
+        let fontSize = parseFloat(window.getComputedStyle(element).fontSize);
+        const minFontSize = 6; // Allow smaller size for dense text
+
+        // Calculate available height based on card dimensions
+        const cardHeight = 436;
+        let paddingBottom = 30; // Margen de seguridad inferior aumentado
+
+        if (this.isIdentity) {
+            // Para Identidades, evitar solapamiento con estadísticas inferiores
+            paddingBottom = cardHeight - 365;
+        }
+
+        const availableHeight = cardHeight - element.offsetTop - paddingBottom;
+
+        // Loop to shrink font size if content overflows
+        while (
+            (element.scrollHeight > availableHeight || element.scrollWidth > element.clientWidth) &&
+            fontSize > minFontSize
+        ) {
+            fontSize -= 0.5;
+            element.style.fontSize = `${fontSize}px`;
+        }
     }
 
     onMouseDown(event: MouseEvent): void {
